@@ -1,12 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/use-all.css">
+   
 </head>
+
 <body>
-    
+    <!-- 头部 -->
+    <header>
+        <div class="top clearfix">
+            <div class="logo"><img src="../img/logonew.png" alt=""></div>
+            <ul class="clearfix">
+                <li><a href="">首页</a></li>
+                <li><a href="">酷玩</a></li>
+                <li><a href="">导购</a></li>
+                <li class="one"><a href="">使用</a></li>
+                <li><a href="">报告</a></li>
+            </ul>
+            <div class="right clearfix">
+                <img src="../img/search.png" alt="">
+                <span class="reg">注册</span>
+            </div>
+        </div>
+    </header>
+    <!-- 页面内容 -->
+    <section>
+        <div class="box">
+            <h1>免费试用</h1>
+            <ul class="top clearfix">
+                <li class="one_"><a href="">大众使用</a></li>
+                <li><a href="../use/use-experience.html">体验师专享</a></li>
+            </ul>
+            <ul class="all_ clearfix">
+                <li class="one_1"><a href="">全部</a></li>
+                <li><a href="../use/use-apply.html">申请中</a></li>
+                <li><a href="../use/use-try.html">试用中</a></li>
+                <li><a href="../use/use-end.html">已结束</a></li>
+            </ul>
+            <ul class="end"></ul>
+            <ul id="enter" class="clearfix">
+                <!-- <li>
+                    <img src="../img/hot1.jpg" alt="">
+                    <p class="p1">巴慕达The Toaster烤面包机</p>
+                    <div class="num_  clearfix"><span>2032</span><span>20台</span></div>
+                    <p class="p2">1392申请</p>
+                    <p class="p2">报告数量：8</p>
+                </li> -->
+            </ul>
+            <p class="di">加载更多</p>
+            <p class="de">努力加载中....</p>
+        </div>
+    </section>
+
+
+    <!-- 底部 -->
+    <footer>
+        <div class="cen_ clearfix">
+            <div class="top_ clearfix">
+                <div class="le_"><img src="../img/code.png" alt=""></div>
+                <div class="le_1">
+                    <img src="../img/logoImg.jpg" alt="">
+                    <p>全球酷玩试用导购平台酷·新奇·好玩·品质 </p>
+                    <span>微信添加“JguoJguo”获取我们的服务。</span>
+                </div>
+                <dl class="dl1">
+                    <dt><a href="">免费试用</a></dt>
+                    <dd><a href="">试用流程</a></dd>
+                    <dd><a href="">如何提高成功率</a></dd>
+                </dl>
+                <dl class="dl2">
+                    <dt><a href="">友情链接</a></dt>
+                    <dd><a href="">智东西</a></dd>
+                    <dd><a href="">搜狐IT</a></dd>
+                    <dd><a href="">搜狐数码</a></dd>
+                    <dd><a href="">凤凰数码</a></dd>
+                    <dd><a href="">泡泡网</a></dd>
+                    <dd><a href="">ZUK社区</a></dd>
+                    <dd><a href="">极客公园 </a></dd>
+                    <dd><a href="">果库</a></dd>
+                </dl>
+                <dl class="dl3">
+                    <dd><a href=""> WEIBUSI</a></dd>
+                    <dd><a href=""> 腾讯科技</a></dd>
+                    <dd><a href="">凤凰科技</a></dd>
+                    <dd><a href="">PConline</a></dd>
+                    <dd><a href="">3W咖啡</a></dd>
+                    <dd><a href="">亿觅emie</a></dd>
+                    <dd><a href="">易迅易启玩</a></dd>
+                </dl>
+                <dl class="dl4">
+                    <dt><a href="">购买攻略</a></dt>
+                    <dd><a href="">美亚海淘教程</a></dd>
+                    <dd><a href="">日亚海淘教程</a></dd>
+                    <dd><a href="">海淘转运攻略</a></dd>
+                    <dd><a href="">kickstarter 众筹购买攻略</a></dd>
+                    <dd><a href="">indiegogo 众筹购买攻略</a></dd>
+                </dl>
+                <dl class="dl4">
+                    <dt><a href="">厂商合作</a></dt>
+                    <dd><a href="">关于极果</a></dd>
+                    <dd><a href="">联系我们</a></dd>
+                    <dd><a href="">商务合作：BD@jiguo.com</a></dd>
+                    <dd><a href="">CEO邮箱：CEO@jiguo.com</a></dd>
+            </div>
+            <div class="click_">回到顶部</div>
+            <div class="bot_">? 2016 极果版权所有
+            </div>
+        </div>
+    </footer>
+
+
 </body>
+<script src="../js/jquery-3.5.1.js"></script>
+<script id="lis" type="text/x-dot-template">
+    {{~ it:value:index}} 
+ <li>
+    <img src="../img/hot1.jpg" alt="">
+    <p class="p1">{{=value.text}}</p>
+    <div class="num_  clearfix"><span>{{=value.totalnum}}</span><span>{{=value.num}}</span></div>
+    <p class="p2">{{=value.apply}}</p>
+    <p class="p2">报告数量：8</p>
+</li>
+     {{~}}
+
+</script>
+
+<script>
+    function cb() {
+      
+        var ajax_ = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
+        ajax_.open('get', 'http://192.168.1.64:3000/useing/public', true);
+        ajax_.send();
+        ajax_.onreadystatechange = function () {
+            if (ajax_.readyState == 4 && ajax_.status == 200) {
+                // console.log(typeof ajax_)
+                var data = ajax_.responseText;
+                //  console.log(typeof data);
+                data = JSON.parse(data);
+                console.log(data)
+
+                //   调用
+                var inter = doT.template(document.getElementById('lis').innerText);
+                enter.innerHTML = inter(data)
+                $('.di').show();
+                $('.de').hide();
+            }
+        }
+    }
+    cb();
+    $('.di').on('click', function () {
+        var a = $('.end').html();
+        a += $('#enter').html();
+        $('.end').html(a);
+        $('.di').hide();
+        $('.de').show();
+        cb();
+    })
+</script>
+<script src="../js/doT.min.js"></script>
+<script src="../js/use-all.js"></script>
+
 </html>
