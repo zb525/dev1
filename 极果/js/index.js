@@ -1,6 +1,9 @@
-
+$('.td').animate({
+            
+    marginLeft:-1028
+},1500)
  
-var num=0
+var num=-1028
 var time=null
 fn()
 function fn(){
@@ -17,31 +20,15 @@ function fn(){
         $('.td').animate({
             
             marginLeft:num
-        },500)
-    },1000)
+        },1500)
+    },2000)
 
 }
 
-$('.next').click(function(){
-     clearInterval(time)
-     $('.td').animate({
-         
-        marginLeft:num+1028
-        
-    },500)
-    fn()
-})
 
 
-$('.prev').click(function(){
-    clearInterval(time)
-    $('.td').animate({
-        
-       marginLeft:num-1028
-       
-   },500)
-   fn()
-})
+
+
 
 
 

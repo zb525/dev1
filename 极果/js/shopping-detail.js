@@ -1,0 +1,10 @@
+$('.lis').hover(function(){
+      $('.des_share').show()
+},function(){
+    $('.des_share').hide()
+});
+$('.click_').on('click',function(){
+    $('body,html').animate({
+         scrollTop:0
+    },50)
+  });

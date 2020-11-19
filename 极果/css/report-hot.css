@@ -90,8 +90,20 @@ header .top .right .reg {
 }
 .content .nav .red {
   display: inline-block;
+  border-bottom: 3px solid white;
+  width: 100px;
+  padding-bottom: 10px;
+}
+.content .nav .zr > a {
+  display: inline-block;
   color: #FAAE97;
   border-bottom: 3px solid #FE6442;
+  width: 100px;
+  padding-bottom: 10px;
+}
+.content .nav .zr {
+  display: inline-block;
+  border-bottom: 3px solid white;
   width: 100px;
   padding-bottom: 10px;
 }
