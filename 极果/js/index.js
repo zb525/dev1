@@ -46,7 +46,7 @@ function fn(){
     })
 
    $('.reg').click(function(){
-       window.open('http://127.0.0.1:5500/dev1/%E6%9E%81%E6%9E%9C/regist.html')
+       window.open('./regist.html')
    })
 
 
