@@ -1,7 +1,7 @@
 $('.td').animate({
             
     marginLeft:-1028
-},1500)
+},1000)
  
 var num=-1028
 var time=null
@@ -20,11 +20,17 @@ function fn(){
         $('.td').animate({
             
             marginLeft:num
-        },1500)
+        },1000)
     },2000)
 
 }
 
+
+$('img').hover(function(){
+    $(this).css('opacity','0.2')
+},function(){
+    $(this).css('opacity','1')
+})
 
 
 
@@ -66,17 +72,14 @@ $('.jz').click(function(){
 
 
 
-    var phone_reg=/^1[3|4|5|7|8]\d{9}$/;
+    
 
     $('#but').click(function(){
         if($('#name').val().length==0){
             alert('手机号不能为空')
             return false;
         }
-        if(!phone_reg.test($('#name').val())){
-            alert('请输入正确的手机号')
-            return false;
-        }
+        
       
        if($('#password').val().length<6||$('#password').val().length>8){
            alert('请输入正确的密码')
@@ -86,10 +89,10 @@ $('.jz').click(function(){
     url:'http://192.168.1.64:3000/users/login',
     type:'post',
     data:{
-        phone:$('#name').val(),
         
         
-        password:$('#password_').val()
+        username:$('#name').val(),
+        password:$('#password').val()
     },
     success:function(data){
         console.log(data)
