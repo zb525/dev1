@@ -80,29 +80,26 @@ $('.jz').click(function(){
       
        if($('#password').val().length<6||$('#password').val().length>8){
            alert('请输入正确的密码')
-       }else{
-           alert('登录成功') 
-           }
-
- //请求数据
-var name=$('.username').val()
-       
-var ajax=new XMLHttpRequest()||new ActiveXobjeck('Microsoft.XMLHTTP'); 
-         
-          ajax.open('get','http://192.168.1.64:3000/users/login?username=admin&password=123456');
-
-         
-         ajax.send('{ "username" :"admin", "password" :"123456"}')   
-         
-          ajax.onreadystatechange=function(){ 
-                
-               if(ajax.readyState==4||ajax.status==200){   
-                   var data=ajax.responseText;
-                   data = eval('('+data+')');
-                   
-                    console.log(data)       
-               }
-          }
+       }
+ // 登录请求数据
+ $.ajax({
+    url:'http://192.168.1.64:3000/users/login',
+    type:'post',
+    data:{
+        phone:$('#name').val(),
+        
+        
+        password:$('#password_').val()
+    },
+    success:function(data){
+        console.log(data)
+        alert(data.msg)
+        if(data.status == 200 ){
+            window.open('./index.html')
+        }
+    },
+    dataType:'json',
+})
 })
 
 
