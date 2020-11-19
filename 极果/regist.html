@@ -4,9 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/Reset the file.css">
     <link rel="stylesheet" href="./css/regist.css">
+
 </head>
 <body>
-    
+<!-- 头部 -->
+<header>
+    <div class="top clearfix">
+        <div class="logo"><img src="./img/logonew.png" alt=""></div>
+        <ul class="clearfix">
+            <li class="one"><a href="./index.html">首页</a></li>
+            <li><a href="./play/play-new.html">酷玩</a></li>
+            <li><a href="./guid/shopping-new.html">导购</a></li>
+            <li><a href="./use/use-all.html">试用</a></li>
+            <li><a href="./report/report-new.html">报告</a></li>
+        </ul>
+        <div class="right clearfix">
+            <img src="./img/search.png" alt="">
+            <span class="reg">注册</span>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- 主体 -->
+<div class="page">
+    <div class="box">
+        <div class="box-top">
+            <div>注册极果</div>
+        </div>
+        <div class="form" action="">
+             <input class="phone" type="text" value=" 请输入登录手机号">
+             <input class="img" type="text" value=" 请输入图片校验码"> <div class="imgcod"><img src="./img/images/code-1_03.png" alt=""></div>
+             <input class="verify" type="text" value=" 请输入4位数字验证码"><button class="code">获取验证码</button>
+             <input class="username" type="text" value=" 请输入用户名">
+             <input class="pass" type="password" value=" 请输入新密码">
+             <input class="pass_" type="password" value=" 确定新密码">
+             <button class="button">立即注册</button>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 底部 -->
+<footer>
+    <div class="cen_ clearfix">
+        <div class="top_ clearfix">
+            <div class="le_"><img src="./img/code.png" alt=""></div>
+            <div class="le_1" >
+                <img src="./img/logoImg.jpg" alt="">
+                <p>全球酷玩试用导购平台酷·新奇·好玩·品质 </p>
+                <span>微信添加“JguoJguo”获取我们的服务。</span>
+            </div>
+            <dl class="dl1">
+                <dt><a href="">免费试用</a></dt>
+                <dd><a href="">试用流程</a></dd>
+                <dd><a href="">如何提高成功率</a></dd>
+            </dl>
+            <dl class="dl2">
+                <dt><a href="">友情链接</a></dt>
+                <dd><a href="">智东西</a></dd>
+                <dd><a href="">搜狐IT</a></dd>
+                <dd><a href="">搜狐数码</a></dd>
+                <dd><a href="">凤凰数码</a></dd>
+                <dd><a href="">泡泡网</a></dd>
+                <dd><a href="">ZUK社区</a></dd>
+                <dd><a href="">极客公园 </a></dd>
+                <dd><a href="">果库</a></dd>
+            </dl>
+            <dl class="dl3">
+                <dd><a href=""> WEIBUSI</a></dd>
+                <dd><a href=""> 腾讯科技</a></dd>
+                <dd><a href="">凤凰科技</a></dd>
+                <dd><a href="">PConline</a></dd>
+                <dd><a href="">3W咖啡</a></dd>
+                <dd><a href="">亿觅emie</a></dd>
+                <dd><a href="">易迅易启玩</a></dd>
+            </dl>
+            <dl class="dl4">
+                <dt><a href="">购买攻略</a></dt>
+                <dd><a href="">美亚海淘教程</a></dd>
+                <dd><a href="">日亚海淘教程</a></dd>
+                <dd><a href="">海淘转运攻略</a></dd>
+                <dd><a href="">kickstarter 众筹购买攻略</a></dd>
+                <dd><a href="">indiegogo 众筹购买攻略</a></dd>
+            </dl>
+            <dl class="dl4">
+                <dt><a href="">厂商合作</a></dt>
+                <dd><a href="">关于极果</a></dd>
+                <dd><a href="">联系我们</a></dd>
+                <dd><a href="">商务合作：BD@jiguo.com</a></dd>
+                <dd><a href="">CEO邮箱：CEO@jiguo.com</a></dd>
+        </div>
+        <div class="bot_">? 2016 极果版权所有
+        </div>
+    </div>
+</footer>
+
+
+
+
+   
 </body>
+<script src="./js/jquery-3.5.1.js"></script>
+<script>
+    //验证码
+    var num=6
+    var item=null
+       $('.code').click(function(){
+        item=setInterval(function(){
+               num--;
+               $('.code').text(num)
+               if(num<=0){
+                  num=6
+                  clearInterval(item)
+                $('.code').text('获取验证码')
+               }
+           },1000)
+          
+       })
+       
+     
+    //表单验证
+        var phone_reg=/^1[3|4|5|7|8]\d{9}$/;
+       
+
+        $('.button').click(function(){
+            if($('.phone').val().length==0){
+                alert('手机号不能为空')
+                return false;
+            }
+            if(!phone_reg.test($('.phone').val())){
+                alert('请输入正确的手机号')
+                return false;
+            }
+           if($('.username').val().length<6){
+               alert('用户名不能小于6位数')
+               return false;
+           }
+           if($('.pass').val()!==$('.pass_').val()){
+               alert('两次密码不相同')
+           }
+
+    //请求数据
+    var name=$('.username').val()
+           
+    var ajax=new XMLHttpRequest()||new ActiveXobjeck('Microsoft.XMLHTTP'); 
+             
+              ajax.open('post','http://192.168.1.64:3000/users/regist',true);
+
+             
+             ajax.send('username=15936963553&password=123456')   
+             
+              ajax.onreadystatechange=function(){ 
+                    
+                   if(ajax.readyState==4||ajax.status==200){   
+                       var data=ajax.responseText;
+                      
+                        console.log(data)       
+                   }
+              }
+        })
+
+
+    
+</script>
 </html>
